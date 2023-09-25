@@ -1,0 +1,98 @@
+1)
+
+mysql> SELECT * FROM S
+    -> ORDER BY CITY DESC;
++------+-------+--------+--------+
+| S#   | SNAME | STATUS | CITY   |
++------+-------+--------+--------+
+| S2   | Jones |     10 | Paris  |
+| S3   | Blake |     30 | Paris  |
+| S1   | Smith |     20 | London |
+| S4   | Clark |     20 | London |
+| S5   | Adams |     30 | Athens |
++------+-------+--------+--------+
+5 rows in set (0.00 sec)
+
+2)
+
+mysql> SELECT * FROM P
+    -> ORDER BY CITY,PNAME;
++------+-------+-------+--------+--------+
+| P#   | PNAME | COLOR | WEIGHT | CITY   |
++------+-------+-------+--------+--------+
+| P6   | Cog   | Red   |     19 | London |
+| P1   | Nut   | Red   |     12 | London |
+| P4   | Screw | Red   |     14 | London |
+| P2   | Bolt  | Green |     17 | Paris  |
+| P5   | Cam   | Blue  |     12 | Paris  |
+| P3   | Screw | Blue  |     17 | Rome   |
++------+-------+-------+--------+--------+
+6 rows in set (0.00 sec)
+
+3)
+
+mysql> SELECT * FROM S
+    -> WHERE STATUS BETWEEN 10 AND 15;
++------+-------+--------+-------+
+| S#   | SNAME | STATUS | CITY  |
++------+-------+--------+-------+
+| S2   | Jones |     10 | Paris |
++------+-------+--------+-------+
+1 row in set (0.00 sec)
+
+
+4)
+
+mysql> SELECT PNAME, WEIGHT FROM P
+    -> WHERE WEIGHT NOT BETWEEN 10 AND 15;
++-------+--------+
+| PNAME | WEIGHT |
++-------+--------+
+| Bolt  |     17 |
+| Screw |     17 |
+| Cog   |     19 |
++-------+--------+
+3 rows in set (0.00 sec)
+
+
+5)
+
+mysql> SELECT * FROM P
+    -> WHERE PNAME LIKE 'S%';
++------+-------+-------+--------+--------+
+| P#   | PNAME | COLOR | WEIGHT | CITY   |
++------+-------+-------+--------+--------+
+| P3   | Screw | Blue  |     17 | Rome   |
+| P4   | Screw | Red   |     14 | London |
++------+-------+-------+--------+--------+
+2 rows in set (0.01 sec)
+
+
+6)
+
+
+mysql> SELECT * FROM S 
+    -> WHERE CITY LIKE 'L%';
++------+-------+--------+--------+
+| S#   | SNAME | STATUS | CITY   |
++------+-------+--------+--------+
+| S1   | Smith |     20 | London |
+| S4   | Clark |     20 | London |
++------+-------+--------+--------+
+2 rows in set (0.00 sec)
+
+
+7)
+
+
+mysql> SELECT * FROM J
+    -> WHERE JNAME LIKE '__N%';
++------+---------+--------+
+| J#   | JNAME   | CITY   |
++------+---------+--------+
+| J2   | Punch   | Rome   |
+| J4   | Console | Athens |
++------+---------+--------+
+2 rows in set (0.00 sec)
+
+

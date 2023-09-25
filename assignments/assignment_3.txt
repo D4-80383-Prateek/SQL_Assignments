@@ -1,0 +1,7 @@
+1) Does ANSII recognise the datatype DATE?
+
+Ans: Yes and the default format is 'YYYY-MM-DD'.
+
+2) Which subdivison of sql is used to insert values into table?
+
+Ans: The 'INSERT INTO' statement is used to insert values in tables.

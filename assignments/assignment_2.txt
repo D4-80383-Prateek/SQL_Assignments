@@ -1,0 +1,16 @@
+1) which key of the customer table is primary key?
+
+ Ans:   CNUM would be the primary key in customer table.
+ 
+ 2) which is the 4th column of customeror table?
+ 
+ Ans:   RATING is the 4th column od customer table.
+ 
+ 3) Another word for row and col?
+ 
+ Ans:   row = tuple, records
+ 	column = field, attributes
+ 
+ 4) Why isnt it possible to see the 1st 5 row of table?
+ 
+ Ans:   Because the rows are not stored sequentially, as they scattered into the DataBase server Hard Drive.

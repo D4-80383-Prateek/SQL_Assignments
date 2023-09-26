@@ -1,0 +1,142 @@
+1)
+
+mysql> SELECT CONCAT(UPPER(SUBSTR(SNAME,1,1)),SUBSTR(SNAME,2)) AS SNAME FROM S;
++-------+
+| SNAME |
++-------+
+| Smith |
+| Jones |
+| Blake |
+| Clark |
+| Adams |
++-------+
+5 rows in set (0.00 sec)
+
+
+2)
+
+mysql> SELECT UPPER(SNAME) FROM S;
++--------------+
+| UPPER(SNAME) |
++--------------+
+| SMITH        |
+| JONES        |
+| BLAKE        |
+| CLARK        |
+| ADAMS        |
++--------------+
+5 rows in set (0.00 sec)
+
+
+3)
+
+mysql> SELECT LOWER(SNAME) FROM S;
++--------------+
+| LOWER(SNAME) |
++--------------+
+| smith        |
+| jones        |
+| blake        |
+| clark        |
+| adams        |
++--------------+
+5 rows in set (0.00 sec)
+
+
+4)
+
+mysql> SELECT LPAD(SNAME,25,' ') FROM S;
++---------------------------+
+| LPAD(SNAME,25,' ')        |
++---------------------------+
+|                     Smith |
+|                     Jones |
+|                     Blake |
+|                     Clark |
+|                     Adams |
++---------------------------+
+5 rows in set (0.00 sec)
+
+
+5)
+
+mysql> SELECT REPLACE(SNAME,'la','ro') FROM S;
++--------------------------+
+| REPLACE(SNAME,'la','ro') |
++--------------------------+
+| Smith                    |
+| Jones                    |
+| Broke                    |
+| Crork                    |
+| Adams                    |
++--------------------------+
+5 rows in set (0.00 sec)
+
+
+6)
+
+mysql> SELECT REPLACE(REPLACE(SNAME,'l','r'),'a','o') FROM S;
++-----------------------------------------+
+| REPLACE(REPLACE(SNAME,'l','r'),'a','o') |
++-----------------------------------------+
+| Smith                                   |
+| Jones                                   |
+| Broke                                   |
+| Crork                                   |
+| Adoms                                   |
++-----------------------------------------+
+5 rows in set (0.00 sec)
+
+
+7)
+
+mysql> SELECT SNAME, LENGTH(SNAME) FROM S;
++-------+---------------+
+| SNAME | LENGTH(SNAME) |
++-------+---------------+
+| Smith |             5 |
+| Jones |             5 |
+| Blake |             5 |
+| Clark |             5 |
+| Adams |             5 |
++-------+---------------+
+5 rows in set (0.00 sec)
+
+8)
+
+mysql> SELECT * FROM S WHERE SOUNDEX(SNAME) = SOUNDEX('BLOKE');
++------+-------+--------+-------+
+| S#   | SNAME | STATUS | CITY  |
++------+-------+--------+-------+
+| S3   | Blake |     30 | Paris |
++------+-------+--------+-------+
+1 row in set (0.00 sec)
+
+
+9)
+
+mysql> SELECT SNAME ,CASE WHEN STATUS = 10 THEN 'TEN' WHEN STATUS = 20 THEN 'TWENTY' WHEN STATUS = 30 THEN 'THIRTY' ELSE 'OTHERS' END "STATUS" FROM S;
++-------+--------+
+| SNAME | STATUS |
++-------+--------+
+| Smith | TWENTY |
+| Jones | TEN    |
+| Blake | THIRTY |
+| Clark | TWENTY |
+| Adams | THIRTY |
++-------+--------+
+5 rows in set (0.00 sec)
+
+
+10)
+
+mysql> SELECT DAYNAME(NOW());
++----------------+
+| DAYNAME(NOW()) |
++----------------+
+| Tuesday        |
++----------------+
+1 row in set (0.00 sec)
+
+	
+	

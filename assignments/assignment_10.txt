@@ -1,0 +1,30 @@
+1)
+
+mysql> SELECT A.SNAME, B.CITY FROM SALESPEOPLE A, SALESPEOPLE B WHERE A.CITY = B.CITY AND A.SNUM <> B.SNUM;
++--------+--------+
+| SNAME  | CITY   |
++--------+--------+
+| Motika | London |
+| Peel   | London |
++--------+--------+
+2 rows in set (0.00 sec)
+
+
+
+2)
+
+
+
+
+
+mysql> SELECT CNAME, CITY FROM CUSTOMERS WHERE RATING = (SELECT RATING FROM CUSTOMERS WHERE CNAME = 'Hoffman');
++---------+--------+
+| CNAME   | CITY   |
++---------+--------+
+| Hoffman | London |
+| Clemens | London |
+| Pereira | Rome   |
++---------+--------+
+3 rows in set (0.00 sec)
+
+

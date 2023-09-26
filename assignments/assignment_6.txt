@@ -33,6 +33,16 @@ mysql> select * from ORDERS where Odate IN('1990-10-03', '1990-10-04');
 2)
 
 
+mysql> select * from CUSTOMERS, SALESPEOPLE WHERE SALESPEOPLE.SNUM = CUSTOMERS.SNUM AND (SALESPEOPLE.SNAME = 'PEEL' OR SALESPEOPLE.SNAME = 'MOTIKA');
++------+---------+--------+--------+------+------+--------+--------+------+
+| Cnum | Cname   | City   | Rating | Snum | Snum | Sname  | City   | Comm |
++------+---------+--------+--------+------+------+--------+--------+------+
+| 2001 | Hoffman | London |    100 | 1001 | 1001 | Peel   | London | 0.12 |
+| 2006 | Clemens | London |    100 | 1001 | 1001 | Peel   | London | 0.12 |
+| 2007 | Pereira | Rome   |    100 | 1004 | 1004 | Motika | London | 0.11 |
++------+---------+--------+--------+------+------+--------+--------+------+
+3 rows in set (0.00 sec)
+
 
 
 

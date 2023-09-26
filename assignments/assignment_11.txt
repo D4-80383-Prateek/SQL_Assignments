@@ -1,0 +1,50 @@
+1)
+
+mysql> select * from ORDERS 
+    -> WHERE CNUM = (SELECT CNUM FROM CUSTOMERS WHERE CNAME = 'CISNEROS');
++------+---------+------------+------+------+
+| Onum | Amt     | Odate      | Cnum | Snum |
++------+---------+------------+------+------+
+| 3001 |   18.69 | 1990-10-03 | 2008 | 1007 |
+| 3006 | 1098.16 | 1990-10-03 | 2008 | 1007 |
++------+---------+------------+------+------+
+2 rows in set (0.00 sec)
+
+
+2)
+
+mysql> SELECT CNAME, RATING FROM CUSTOMERS WHERE CNUM IN (SELECT CNUM FROM ORDER
+S WHERE AMT > (SELECT AVG(AMT) FROM ORDERS ));
++---------+--------+
+| CNAME   | RATING |
++---------+--------+
+| Liu     |    200 |
+| Clemens |    100 |
++---------+--------+
+2 rows in set (0.00 sec)
+
+
+3)
+
+
+mysql> SELECT SNAME, SUM(AMT) TOTAL_AMT FROM ORDERS, SALESPEOPLE WHERE ORDERS.SNUM = SALESPEOPLE.SNUM GROUP BY SNAME HAVING SUM(AMT) >(SELECT MAX(AMT) FROM ORDERS);
++-------+-----------+
+| SNAME | TOTAL_AMT |
++-------+-----------+
+| Peel  |  15382.07 |
++-------+-----------+
+1 row in set (0.00 sec)
+
+
+
+mysql> SELECT SNAME, SUM(AMT) TOTAL_AMT FROM ORDERS, SALESPEOPLE WHERE ORDERS.SNUM = SALESPEOPLE.SNUM GROUP BY SNAME HAVING SUM(AMT) > MAX(ORDERS.AMT);
++--------+-----------+
+| SNAME  | TOTAL_AMT |
++--------+-----------+
+| Rifkin |   1116.85 |
+| Peel   |  15382.07 |
+| Serres |   6546.15 |
++--------+-----------+
+3 rows in set (0.00 sec)
+
+

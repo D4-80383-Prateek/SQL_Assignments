@@ -1,0 +1,43 @@
+1)
+
+mysql> SELECT * FROM CUSTOMERS WHERE RATING >= ANY (SELECT RATING FROM CUSTOMERS, SALESPEOPLE WHERE SALESPEOPLE.SNUM = CUSTOMERS.SNUM AND SALESPEOPLE.SNAME = 'SERRE
++------+----------+----------+--------+------+
+| Cnum | Cname    | City     | Rating | Snum |
++------+----------+----------+--------+------+
+| 2002 | Giovanni | Rome     |    200 | 1003 |
+| 2003 | Liu      | San Jose |    200 | 1002 |
+| 2004 | Grass    | Berlin   |    300 | 1002 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
++------+----------+----------+--------+------+
+4 rows in set (0.00 sec)
+
+
+2)
+
+
+mysql> SELECT SNAME, SALESPEOPLE.CITY FROM CUSTOMERS, SALESPEOPLE WHERE SALESPEOPLE.SNUM = CUSTOMERS.SNUM AND SALESPEOPLE.CITY <> ALL (SELECT CUSTOMERS.CITY FROM CUSTOMERS WHERE CUSTOMERS.SNUM = SALESPEOPLE.SNUM);
++---------+-----------+
+| SNAME   | CITY      |
++---------+-----------+
+| Axelrod | New York  |
+| Rifkin  | Barcelona |
+| Motika  | London    |
++---------+-----------+
+3 rows in set (0.00 sec)
+
+
+3)
+
+mysql> SELECT ONUM FROM ORDERS WHERE AMT>=ANY(SELECT AMT FROM ORDERS WHERE CNUM
+= ALL(SELECT CNUM FROM CUSTOMERS WHERE CITY = 'LONDON'));
+Empty set (0.00 sec)
+
+
+
+4)
+
+mysql> SELECT ONUM, AMT FROM ORDERS WHERE AMT>(SELECT MAX(AMT) FROM ORDERS WHERE
+ CNUM=ANY(SELECT CNUM FROM CUSTOMERS WHERE CITY='LONDON'));
+Empty set (0.00 sec)
+
+

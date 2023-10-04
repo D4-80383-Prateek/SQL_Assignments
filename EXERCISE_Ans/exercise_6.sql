@@ -46,3 +46,51 @@ SELECT JNAME FROM J WHERE CITY IN(SELECT CITY FROM J WHERE JNAME = 'TAPE');
 --5)
 
 
+SELECT PNAME FROM P WHERE WEIGHT < ANY(SELECT WEIGHT FROM P WHERE COLOR = 'GREEN');
+
++-------+
+| PNAME |
++-------+
+| Nut   |
+| Screw |
+| Cam   |
++-------+
+3 rows in set (0.00 sec)
+
+
+--6)
+
+SELECT SNAME FROM S WHERE `S#` = ANY(SELECT `S#` FROM SPJ WHERE QTY = (SELECT MAX(QTY) FROM SPJ));
+
++-------+
+| SNAME |
++-------+
+| Jones |
+| Adams |
++-------+
+2 rows in set (0.00 sec)
+
+--7)
+
+
+--8)
+
+SELECT SNAME FROM S 
+WHERE `S#`=  
+(SELECT `S#` FROM SPJ 
+GROUP BY `S#` 
+HAVING SUM(QTY) IN 
+(SELECT MAX(SUM_QTY) FROM 
+(SELECT SUM(QTY) SUM
+_QTY FROM SPJ 
+GROUP BY `S#`)ABC));
+
++-------+
+| SNAME |
++-------+
+| Jones |
++-------+
+1 row in set (0.00 sec)
+
+--9)
+

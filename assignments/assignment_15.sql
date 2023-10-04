@@ -1,5 +1,22 @@
 --1)
 
+    INSERT INTO multicust
+    SELECT * FROM SALESPEOPLE WHERE 
+    SNUM = (SELECT SNUM FROM 
+    (SELECT COUNT(CNUM),SNUM FROM CUSTOMERS 
+    GROUP BY SNUM 
+    HAVING COUNT(SNUM)>1)ABCD);
+
+Query OK, 1 row affected (0.00 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+D4_80383_Prateek>_SELECT * FROM multicust;
++------+--------+--------+------+
+| Snum | Sname  | City   | Comm |
++------+--------+--------+------+
+| 1004 | Motika | London | 0.11 |
++------+--------+--------+------+
+1 row in set (0.00 sec)
 
 
 --2)
